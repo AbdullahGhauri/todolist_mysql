@@ -1,0 +1,63 @@
+<div class="modal d-block" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header " style="background-color: #36454F;">
+        <h5 class="modal-title text-white" id="exampleModalLabel" style=" color: white;">
+          Sign Up
+        </h5>
+
+        <button type="button" (click)="ClosePopup()" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-errormessage *ngIf="isErrorShow" [data]="errorMessage"></app-errormessage>
+      <app-errormessage *ngIf="isResponseMessageShow" [data]="responseMessage"></app-errormessage>
+      <div class="modal-body p-0 body">
+
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+
+          <div class="form-group">
+            <input type="email" formControlName="email" class="form-control js-valGet" placeholder="Enter Email"
+              required>
+            <app-inputfieldvalidation *ngIf="email && email.invalid && email.touched" [data]="emailValidationMessage">
+            </app-inputfieldvalidation>
+
+            <input type="text" formControlName="userName" class="form-control js-valGet" placeholder="Enter username"
+              required>
+            <app-inputfieldvalidation *ngIf="userName && userName.invalid && userName.touched"
+              [data]="userNameValidationMessage">
+            </app-inputfieldvalidation>
+
+            <input type="password" formControlName="password" class="form-control js-valGet"
+              placeholder="Enter Password" required>
+            <app-inputfieldvalidation *ngIf="password && password.invalid && password.touched"
+              [data]="passwordValidationMessage">
+            </app-inputfieldvalidation>
+
+            <input type="password" formControlName="repassword" class="form-control js-valGet"
+              placeholder="Re-Enter Password" required>
+            <app-inputfieldvalidation *ngIf="repassword && repassword.invalid && repassword.touched"
+              [data]="rePasswordValidationMessage">
+            </app-inputfieldvalidation>
+          </div>
+
+          <div class="action-btn">
+            <button type="button" type="submit" [disabled]="btnLoad" class="btn btn-outline-info w-100">
+              <span>Sign Up</span>
+              <ng-template #loader>
+                <span>Loading</span>
+              </ng-template>
+              <i class="ic-01"></i>
+            </button>
+
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </form> -->

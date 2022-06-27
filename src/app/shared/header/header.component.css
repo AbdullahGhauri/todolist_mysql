@@ -1,0 +1,14 @@
+button{
+    background-color: white ;
+    color: #36454F;
+    margin-left: auto; 
+    display: block;
+}
+button:hover{
+    background-color:#36454F ;
+    color:white ;
+}
+nav{
+    padding-left: 17%;
+    padding-right: 18%;
+}

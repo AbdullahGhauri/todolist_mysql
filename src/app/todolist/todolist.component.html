@@ -1,0 +1,52 @@
+<!-- <div> -->
+<app-header></app-header>
+<div>
+    <form [formGroup]="todoList" (ngSubmit)="addWork(todoList.value.workName)">
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label class="sr-only" for="inlineFormInput">Name</label>
+                <input type="text" class="form-control mb-2" formControlName="workName" id="inlineFormInput"
+                    placeholder="Enter here">
+                    <app-inputfieldvalidation
+                    *ngIf="workName && workName.invalid && workName.touched"
+                    [data]="todoListItemValidationMeassage">
+                </app-inputfieldvalidation>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary mb-2">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="tableStyle">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Todo Work</th>
+                <th scope="col">Date</th>
+                <!-- <th scope="col" class="buttonStyle">
+                    <div>Edit</div>
+                    <div>Delete</div>
+                </th> -->
+                <!-- <th scope="col" class="buttonStyle">Delete</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of todoItems">
+                <td>{{item.todoListItem}}</td>
+                <td>{{item.todoListItemDate | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+                <td class="buttonStyle"><button class="btn btn-primary mb-2" (click)="updateTodo(item)">Edit</button>
+                    <button style="margin-left: 4em;" class="btn btn-primary mb-2"
+                        (click)="deleteTodo(item.todoListId)">Delete</button>
+                </td>
+                <!-- <td class="buttonStyle"><button class="btn btn-primary mb-2">Submit</button></td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<app-update-popup *ngIf="isPopupShow" [item]="todoListItem" (closepopup)="closepopup()"></app-update-popup>
+
+<!-- </div> -->

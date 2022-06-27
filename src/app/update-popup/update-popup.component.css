@@ -1,0 +1,10 @@
+button:hover{
+    color: white;
+    background-color: #36454F;
+}
+button{
+    color: #36454F;
+}
+.modal-body{
+    margin-top: 2%;
+}
